@@ -18,19 +18,32 @@ class ListTodoViewModel(application: Application):AndroidViewModel(application),
     val loadingLD = MutableLiveData<Boolean>()
     private var job = Job()
 
-    fun refresh(){
+    fun refresh() {
+        loadingLD.value = true
+        todoLoadErrorLD.value = false
         launch {
-            val db = Room.databaseBuilder(getApplication(),
-                TodoDatabase::class.java, "tododb").build()
+            val db = Room.databaseBuilder(
+                getApplication(),
+                TodoDatabase::class.java, "newtododb").build()
 
             todoLD.value = db.todoDao().selectAllTodo()
         }
     }
 
+
+//    fun refresh(){
+//        launch {
+//            val db = Room.databaseBuilder(getApplication(),
+//                TodoDatabase::class.java, "tododb").build()
+//
+//            todoLD.value = db.todoDao().selectAllTodo()
+//        }
+//    }
+
     fun clearTask(todo:Todo){
         launch {
             val db = Room.databaseBuilder(getApplication(),
-                TodoDatabase::class.java, "tododb").build()
+                TodoDatabase::class.java, "newtododb").build()
             db.todoDao().deleteTodo(todo)
             todoLD.value = db.todoDao().selectAllTodo()
         }

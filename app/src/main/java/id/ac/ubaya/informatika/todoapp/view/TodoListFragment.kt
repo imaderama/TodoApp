@@ -9,12 +9,14 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ubaya.informatika.todoapp.R
 import id.ac.ubaya.informatika.todoapp.viewmodel.ListTodoViewModel
 import kotlinx.android.synthetic.main.fragment_todo_list.*
 
 class TodoListFragment : Fragment() {
     private lateinit var viewModel:ListTodoViewModel
+    private var todoListAdapter:TodoListAdapter = TodoListAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +32,9 @@ class TodoListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ListTodoViewModel::class.java)
         viewModel.refresh()
 
+        recTodoList.layoutManager = LinearLayoutManager(context)
+        recTodoList.adapter = todoListAdapter
+
         fabAdd.setOnClickListener {
             val action = TodoListFragmentDirections.actionCreateTodo()
             Navigation.findNavController(it).navigate(action)
@@ -40,7 +45,14 @@ class TodoListFragment : Fragment() {
 
     fun observeViewModel(){
         viewModel.todoLD.observe(viewLifecycleOwner, Observer {
-            Log.d("cektodo", it.toString())
+            todoListAdapter.updateTodoList(it)
+
+            with(txtEmpty){
+                visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
+            }
+
+
+
         })
     }
 }
