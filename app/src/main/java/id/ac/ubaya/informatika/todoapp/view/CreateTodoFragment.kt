@@ -32,7 +32,7 @@ class CreateTodoFragment : Fragment() {
         btnAdd.setOnClickListener {
             var todo = Todo(txtTitle.text.toString(), txtNotes.text.toString())
             var list = listOf(todo)
-            viewModel.addTodo(list)
+            viewModel.addTodo(todo)
             Toast.makeText(it.context, "Todo Created", Toast.LENGTH_SHORT).show()
             Navigation.findNavController(it).popBackStack()
         }

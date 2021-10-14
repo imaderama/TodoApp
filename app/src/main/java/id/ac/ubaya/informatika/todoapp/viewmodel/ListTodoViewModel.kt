@@ -24,7 +24,7 @@ class ListTodoViewModel(application: Application):AndroidViewModel(application),
         launch {
             val db = Room.databaseBuilder(
                 getApplication(),
-                TodoDatabase::class.java, "newtododb").build()
+                TodoDatabase::class.java, "tododb").build()
 
             todoLD.value = db.todoDao().selectAllTodo()
         }
@@ -43,7 +43,7 @@ class ListTodoViewModel(application: Application):AndroidViewModel(application),
     fun clearTask(todo:Todo){
         launch {
             val db = Room.databaseBuilder(getApplication(),
-                TodoDatabase::class.java, "newtododb").build()
+                TodoDatabase::class.java, "tododb").build()
             db.todoDao().deleteTodo(todo)
             todoLD.value = db.todoDao().selectAllTodo()
         }

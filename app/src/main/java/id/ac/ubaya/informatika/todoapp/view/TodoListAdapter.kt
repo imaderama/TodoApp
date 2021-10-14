@@ -1,5 +1,6 @@
 package id.ac.ubaya.informatika.todoapp.view
 
+import android.icu.text.Transliterator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,7 @@ import id.ac.ubaya.informatika.todoapp.R
 import id.ac.ubaya.informatika.todoapp.model.Todo
 import kotlinx.android.synthetic.main.todo_item_layout.view.*
 
-class TodoListAdapter(val todoList:ArrayList<Todo>):RecyclerView.Adapter<TodoListAdapter.TodoListViewHolder>() {
+class TodoListAdapter(val todoList:ArrayList<Todo>, val adapterOnClick : (Any) -> Unit):RecyclerView.Adapter<TodoListAdapter.TodoListViewHolder>() {
     class TodoListViewHolder(var view:View):RecyclerView.ViewHolder(view)
 
     fun updateTodoList(newTodoList:List<Todo>){
@@ -28,7 +29,10 @@ class TodoListAdapter(val todoList:ArrayList<Todo>):RecyclerView.Adapter<TodoLis
         with(holder.view){
             checkTask.text = todoList[position].title
 
-            checkTask.setOnCheckedChangeListener { compoundButton, b ->  }
+            checkTask.setOnCheckedChangeListener { compoundButton, b ->
+                compoundButton.isChecked = false
+                adapterOnClick(todoList[position])
+            }
         }
 
     }
