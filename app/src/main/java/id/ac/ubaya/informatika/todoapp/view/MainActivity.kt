@@ -8,17 +8,24 @@ import androidx.navigation.ui.NavigationUI
 import id.ac.ubaya.informatika.todoapp.R
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var navController: NavController
+    private lateinit var navControllerC: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        navController = Navigation.findNavController(this, R.id.hostFragment)
-        NavigationUI.setupActionBarWithNavController(this, navController)
+//        //actionbar
+//        val actionbar = supportActionBar
+//        //set actionbar title
+//        actionbar!!.title = "New Activity"
+//        //set back button
+//        actionbar.setDisplayHomeAsUpEnabled(true)
+//
+//        navControllerC = Navigation.findNavController(this, R.id.hostFragment)
+//        NavigationUI.setupActionBarWithNavController(this, navControllerC)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(navController, null)
+        return NavigationUI.navigateUp(navControllerC, null)
     }
 }
