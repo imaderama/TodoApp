@@ -17,10 +17,10 @@ import kotlinx.android.synthetic.main.fragment_todo_list.*
 
 class TodoListFragment : Fragment() {
     private lateinit var viewModel:ListTodoViewModel
-    private var todoListAdapter:TodoListAdapter = TodoListAdapter(arrayListOf(), { item -> doClick(item)})
+    private var todoListAdapter:TodoListAdapter = TodoListAdapter(arrayListOf(), { uuid -> doClick(uuid.toString().toInt())})
 
-    fun doClick(item:Any) {
-        viewModel.clearTask(item as Todo)
+    fun doClick(uuid:Int) {
+        viewModel.doneTask(uuid)
     }
 
     override fun onCreateView(

@@ -11,6 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 class ListTodoViewModel(application: Application):AndroidViewModel(application), CoroutineScope {
@@ -26,7 +27,7 @@ class ListTodoViewModel(application: Application):AndroidViewModel(application),
 //            val db = Room.databaseBuilder(getApplication(),
 //                TodoDatabase::class.java, "tododb").build()
             val db = buildDB(getApplication())
-            todoLD.value = db.todoDao().selectAllTodo()
+            todoLD.value = db.todoDao().selectTodoUndone()
         }
     }
 
@@ -40,13 +41,23 @@ class ListTodoViewModel(application: Application):AndroidViewModel(application),
 //        }
 //    }
 
-    fun clearTask(todo:Todo){
+//    fun clearTask(todo:Todo){
+//        launch {
+////            val db = Room.databaseBuilder(getApplication(),
+////                TodoDatabase::class.java, "tododb").build()
+//            val db = buildDB(getApplication())
+//            db.todoDao().deleteTodo(todo)
+//            todoLD.value = db.todoDao().selectAllTodo()
+//        }
+//    }
+
+    fun doneTask(uuid: Int){
         launch {
 //            val db = Room.databaseBuilder(getApplication(),
 //                TodoDatabase::class.java, "tododb").build()
             val db = buildDB(getApplication())
-            db.todoDao().deleteTodo(todo)
-            todoLD.value = db.todoDao().selectAllTodo()
+            db.todoDao().todoDone(uuid)
+            todoLD.value = db.todoDao().selectTodoUndone()
         }
     }
 

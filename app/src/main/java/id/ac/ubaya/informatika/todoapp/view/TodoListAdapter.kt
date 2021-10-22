@@ -28,6 +28,7 @@ class TodoListAdapter(val todoList:ArrayList<Todo>, val adapterOnClick : (Any) -
 
     override fun onBindViewHolder(holder: TodoListViewHolder, position: Int) {
         with(holder.view){
+
             checkTask.text = todoList[position].title + " " + todoList[position].priority
 
             imgEdit.setOnClickListener {
@@ -38,7 +39,7 @@ class TodoListAdapter(val todoList:ArrayList<Todo>, val adapterOnClick : (Any) -
             checkTask.setOnCheckedChangeListener { compoundButton, isChecked ->
                 compoundButton.isChecked = false
                 if(isChecked) {
-                    adapterOnClick(todoList[position])
+                    adapterOnClick(todoList[position].uuid)
                 }
 
             }
