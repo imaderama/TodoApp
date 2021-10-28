@@ -13,7 +13,7 @@ interface TodoDao {
     @Query("SELECT * FROM todo WHERE uuid= :id")
     suspend fun selectTodo(id:Int): Todo
 
-    @Query("SELECT * FROM todo WHERE is_done=0")
+    @Query("SELECT * FROM todo WHERE is_done=0 ORDER BY priority DESC")
     suspend fun selectTodoUndone():List<Todo>
 
     @Query("UPDATE todo SET title=:title, notes=:notes, priority=:priority WHERE uuid=:uuid")
