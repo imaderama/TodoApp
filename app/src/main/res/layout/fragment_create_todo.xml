@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-
+        <variable name="todo" type="id.ac.ubaya.informatika.todoapp.model.Todo" />
+        <variable name="radiolistener1" type="id.ac.ubaya.informatika.todoapp.view.RadioButtonClickListener" />
+        <variable name="listener" type="id.ac.ubaya.informatika.todoapp.view.ButtonAddClickListener" />
     </data>
     <FrameLayout
         android:layout_width="match_parent"
@@ -76,6 +78,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
+                android:onClick="@{(view)->listener.onButtonAddClick(view, todo)}"
                 android:text="ADD TODO"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +96,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
             <RadioGroup
-                android:id="@+id/radioGroupPriority"
+                android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -101,7 +104,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView2">
 
                 <RadioButton
-                    android:id="@+id/radioHigh"
+                    android:id="@+id/rbHigh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:checked="true"
@@ -109,14 +112,14 @@
                     android:text="@string/highpriority" />
 
                 <RadioButton
-                    android:id="@+id/radioMedium"
+                    android:id="@+id/rbMedium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:tag="2"
                     android:text="@string/mediumpriority" />
 
                 <RadioButton
-                    android:id="@+id/radioLow"
+                    android:id="@+id/rbLow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:tag="1"
@@ -124,4 +127,5 @@
             </RadioGroup>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
+
 </layout>
