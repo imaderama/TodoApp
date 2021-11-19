@@ -13,17 +13,17 @@ interface TodoEditClickListener {
 }
 
 interface RadioClickListener {
-    fun onRadioClick(v: View, priority:Int, obj:Todo)
+    fun onRadioClick(v: View, obj:Todo)
 }
 
-interface RadioButtonClickListener {
-    fun onRadioButtonClick(v: View, priority:Int, obj:Todo)
-}
+//interface RadioButtonClickListener {
+//    fun onRadioButtonClick(v: View, obj:Todo)
+//}
 
 interface TodoSaveChangesListener {
     fun onTodoSaveChanges(v:View, obj:Todo)
 }
 
 interface ButtonAddClickListener {
-    fun onButtonAddClick(v:View, obj:Todo)
+    fun onButtonAddClick(v:View)
 }
