@@ -44,16 +44,6 @@ class EditTodoFragment : Fragment(), RadioClickListener, TodoSaveChangesListener
         dataBinding.listener = this
 
 
-
-//        txtJudulTodo.text = "Edit Todo"
-//        btnAdd.text = "Save Changes"
-
-//        btnAdd.setOnClickListener {
-//            val radio = view.findViewById<RadioButton>(radioGroupPriority.checkedRadioButtonId)
-//            viewModel.update(txtTitle.text.toString(), txtNotes.text.toString(), radio.tag.toString().toInt(), uuid)
-//            Toast.makeText(view.context, "Todo updated", Toast.LENGTH_SHORT).show()
-//        }
-
         observeViewModel()
     }
 
@@ -77,7 +67,7 @@ class EditTodoFragment : Fragment(), RadioClickListener, TodoSaveChangesListener
         })
     }
 
-    override fun onRadioClick(v: View, priority: Int, obj: Todo) {
+    override fun onRadioClick(v: View, obj: Todo) {
         obj.priority = v.tag.toString().toInt()
     }
 
