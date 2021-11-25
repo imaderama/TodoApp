@@ -39,7 +39,8 @@ class CreateTodoFragment : Fragment(), ButtonAddTodoClickListener, RadioClickLis
     var hour = 0
     var minute = 0
 
-    var test = ""
+    val test = ""
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
