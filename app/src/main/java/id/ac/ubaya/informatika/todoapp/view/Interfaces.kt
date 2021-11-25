@@ -31,3 +31,7 @@ interface DateClickListener {
 interface TimeClickListener {
     fun onTimeClick(v:View)
 }
+
+interface listener {
+    fun onTimeClick(v:View)
+}

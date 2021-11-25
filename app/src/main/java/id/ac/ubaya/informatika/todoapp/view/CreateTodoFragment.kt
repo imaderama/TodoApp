@@ -40,6 +40,7 @@ class CreateTodoFragment : Fragment(), ButtonAddTodoClickListener, RadioClickLis
     var minute = 0
 
     val test = ""
+    val test1 = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

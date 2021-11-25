@@ -16,6 +16,9 @@
         <variable
             name="listener_time"
             type="id.ac.ubaya.informatika.todoapp.view.TimeClickListener" />
+        <variable
+            name="data"
+            type="id.ac.ubaya.informatika.todoapp.model.Todo" />
     </data>
     <FrameLayout
         android:layout_width="match_parent"
