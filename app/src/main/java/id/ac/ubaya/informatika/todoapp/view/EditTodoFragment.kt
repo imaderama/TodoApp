@@ -67,14 +67,18 @@ class EditTodoFragment : Fragment(), RadioClickListener, TodoSaveChangesListener
         })
     }
 
-    override fun onRadioClick(v: View, obj: Todo) {
-        obj.priority = v.tag.toString().toInt()
-    }
+//    override fun onRadioClick(v: View, obj: Todo) {
+//        obj.priority = v.tag.toString().toInt()
+//    }
 
     override fun onTodoSaveChanges(v: View, obj: Todo) {
 //        val radio = view.findViewById<RadioButton>(radioGroupPriority.checkedRadioButtonId)
         Log.d("cobacek", obj.toString())
         viewModel.update(obj.title, obj.notes, obj.priority, obj.uuid)
         Toast.makeText(v.context, "Todo updated", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onRadioClick(v: View, priority: Int, obj: Todo) {
+        obj.priority = v.tag.toString().toInt()
     }
 }
